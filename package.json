@@ -1,0 +1,67 @@
+{
+  "name": "gowebsurvey",
+  "version": "0.0.1",
+  "description": "A Quasar Framework app",
+  "productName": "Quasar App",
+  "author": "",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue ./",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^32.0.0",
+    "@ckeditor/ckeditor5-vue": "^2.0.1",
+    "@morioh/v-quill-editor": "^1.0.2",
+    "@quasar/extras": "^1.0.0",
+    "@tiptap/starter-kit": "^2.0.0-beta.183",
+    "@tiptap/vue-3": "^2.0.0-beta.90",
+    "@vueup/vue-quill": "^1.0.0-beta.8",
+    "axios": "^0.21.4",
+    "core-js": "^3.6.5",
+    "dedent": "^0.7.0",
+    "jquery": "^3.6.0",
+    "quasar": "^2.0.0",
+    "quill-blot-formatter": "^1.0.5",
+    "vue": "^3.2.31",
+    "vue-country-code": "^1.1.2",
+    "vue-google-login": "^2.0.5",
+    "vue-navigator-share": "^1.0.3",
+    "vue-phone-number-input": "^1.1.10",
+    "vue-quill-editor": "^3.0.6",
+    "vue-router": "^4.0.10",
+    "vue-social-auth": "^1.4.9",
+    "vue-social-share-component": "^1.1.4",
+    "vue-social-sharing": "^4.0.0-alpha4",
+    "vue-socialmedia-share": "^1.0.1",
+    "vue3-quill": "^0.2.6",
+    "vueditor": "^0.3.1",
+    "vuex": "^4.0.1",
+    "vuex-persistedstate": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.13.14",
+    "@quasar/app": "^3.3.3",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-vue": "^7.0.0",
+    "eslint-webpack-plugin": "^2.4.0",
+    "workbox-webpack-plugin": "^6.4.2"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 12.22.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

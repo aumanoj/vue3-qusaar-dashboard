@@ -1,5 +1,3 @@
-# vue-qusaar-dashboard
-For tutorial web site
 # Quasar App (gowebsurvey)
 
 A Quasar Framework app
