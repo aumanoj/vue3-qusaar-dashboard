@@ -31,7 +31,7 @@
       <thead>
         <tr>
           <th width="10%">S.NO</th>
-          <th>Category</th>
+          <th>Sub Category</th>
           <th>Menu List</th>
           <th width="18%">Action</th>
         </tr>
@@ -39,7 +39,7 @@
       <tbody v-if="side_menus!=null">
         <tr v-for="(sidemenu,key) in side_menus" :key="key">
           <td>{{key + 1}}</td>
-          <td>{{sidemenu.category.name}}</td>
+          <td>{{sidemenu.subCategory.name}}</td>
           <td><span v-html="sidemenu.menu_list"></span></td>
           <td>
             <q-btn size="10px" color="primary" padding="8px" icon="fas fa-edit" class="text-primary" @click="formModal = true , createOrEdit = false, editForm(sidemenu.id)" />
@@ -65,9 +65,9 @@
         <q-card-section class="q-pt-none">
           <div class="row">
             <div class="col-12 q-mb-md">
-                <select v-model="form.category_id" class="form-control" @click="getTutorial()">
-                  <option disabled value="">Select Category</option>
-                    <option v-for="(category,index) in categories" :key="index" :value="category.id" >{{ category.name }}</option>
+                <select v-model="form.sub_category_id" class="form-control" >
+                  <option disabled value="">Select Sub Category</option>
+                    <option v-for="(category,index) in subCategories" :key="index" :value="category.id" >{{ category.name }}</option>
               </select>
             </div>
             <!-- <div class="col-12 q-mb-md">
@@ -127,7 +127,7 @@ export default {
       formModal: false,
       createOrEdit: true,
       form: {
-        category_id: '',
+        sub_category_id: '',
         order_by: null,
         menu_list:null
       },
@@ -137,7 +137,7 @@ export default {
       ...mapGetters({
         side_menus:'newsidemenu/side_menus',
         sub_categories:'newsidemenu/sub_categories',
-        categories:'newsidemenu/categories',
+        subCategories:'newsidemenu/categories',
         paginate:'newsidemenu/paginate',
         isLoading:'newsidemenu/isLoading',
       }),

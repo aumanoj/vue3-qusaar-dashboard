@@ -31,7 +31,7 @@
       <thead>
         <tr>
           <th width="10%">S.NO</th>
-          <th>Category</th>
+          <th>Sub Category</th>
           <th>Menu List</th>
           <th width="18%">Action</th>
         </tr>
@@ -39,7 +39,7 @@
       <tbody v-if="side_menus!=null">
         <tr v-for="(sidemenu,key) in side_menus" :key="key">
           <td>{{key + 1}}</td>
-          <td>{{sidemenu.category.name}}</td>
+          <td>{{sidemenu.subCategory.name}}</td>
           <td><span v-html="sidemenu.menu_list.substring(0,190)"></span><b>...</b></td>
           <td>
             <router-link :to="'/new-side-menu/'+sidemenu.id" class="text-black"><q-btn  size="10px" color="info" padding="8px" icon="fas fa-eye" class="q-mr-sm" @click="formModal = true , createOrEdit = false, editForm(sidemenu.id)" /></router-link>
@@ -66,18 +66,11 @@
         <q-card-section class="q-pt-none">
           <div class="row">
             <div class="col-12 q-mb-md">
-                <select v-model="form.category_id" class="form-control" @click="subCategories($event)">
-                  <option disabled value="">Select Category</option>
-                    <option v-for="(category,index) in categories" :key="index" :value="category.id" >{{ category.name }}</option>
+                <select v-model="form.sub_category_id" class="form-control" >
+                  <option disabled value="">Select Sub Category</option>
+                    <option v-for="(category,index) in subCategories" :key="index" :value="category.id" >{{ category.name }}</option>
               </select>
             </div>
-            <!-- <div class="col-12 q-mb-md">
-                <select v-model="form.sub_category_id" class="form-control">
-                  <option disabled value="">Select Sub Category</option>
-                    <option v-for="(sub_category,index) in sub_categories" :key="index" :value="sub_category.id" >{{ sub_category.name }}</option>
-              </select>
-            </div> -->
-
             
               <div class="col-12">
               <q-input dense type="textarea" outlined v-model="form.menu_list" label="List Menu" lazy-rules :rules="[ val => val && val.length > 0 || 'This field is required']"/>
@@ -134,9 +127,8 @@ export default {
       model: null,
       formModal: false,
       createOrEdit: true,
-      sub_categories:[],
       form: {
-        category_id: '',
+        sub_category_id: '',
         order_by: null,
         menu_list:null
       },
@@ -145,7 +137,7 @@ export default {
   computed:{
       ...mapGetters({
         side_menus:'newsidemenu/side_menus',
-        categories:'newsidemenu/categories',
+        subCategories:'newsidemenu/categories',
         paginate:'newsidemenu/paginate',
         isLoading:'newsidemenu/isLoading',
       }),
