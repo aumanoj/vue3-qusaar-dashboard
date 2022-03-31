@@ -109,11 +109,13 @@
           </div> -->
           <div class="row q-mb-lg">
             <div class="col-12 ">
-                <select v-model="form.blog_subcat" class="form-control" @change="selectItemShow($event)">
+                <!-- <select v-model="form.blog_subcat" class="form-control" @change="selectItemShow($event)">
                   <option disabled value="">Select Tutorial</option>
                     <option v-for="(sub_category,index) in sub_categories" :key="index" :value="sub_category.id" >{{ sub_category.name }}</option>
                     <option  value="newCat">Enter New Category</option>
-              </select>
+              </select> -->
+               <select-with-search  v-model="form.blog_subcat" :stringOptions="sub_categories" />
+              
             </div>
           </div>
            <div class="row"  v-if="seen">
@@ -361,20 +363,25 @@
 </template>
 <script>
  import VuePagination from '../../components/vue-pagination'
- import {mapActions,mapGetters} from 'vuex'
+ import {mapActions,mapGetters,useStore} from 'vuex'
 //  import { QuillEditor } from '@vueup/vue-quill'
  import '@vueup/vue-quill/dist/vue-quill.snow.css'
 import BlotFormatter from 'quill-blot-formatter'
 // import CKEditor from '@ckeditor/ckeditor5-vue';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import SelectWithSearch from '../../components/SelectWithSearch.vue'
+import { computed} from 'vue'
+
 
 export default {
   components: {
     VuePagination,
+    SelectWithSearch
     // QuillEditor,
-    // ckeditor: CKEditor.component
+    // ckeditor: CKEditor.component,
+  
   },
- 
+
   data () {
     return {
       model: null,
@@ -416,6 +423,8 @@ export default {
                 editorConfig: {
                     // The configuration of the editor.
                 }
+
+                
     }
   },
   mounted(){
@@ -461,20 +470,20 @@ export default {
       },
     createdForm () {
       console.log(this.form);
-      this.$q.loading.show()
-          this.create(this.form)
-      .then(response => {
-        if (response.success) {
-          this.formModal = false
-          this.$q.loading.hide()
-          this.$q.notify({
-            message: response.message,
-          })
-        }
+      // this.$q.loading.show()
+      //     this.create(this.form)
+      // .then(response => {
+      //   if (response.success) {
+      //     this.formModal = false
+      //     this.$q.loading.hide()
+      //     this.$q.notify({
+      //       message: response.message,
+      //     })
+      //   }
         this.get(this.$route.query)
-      }).finally(() => {
-            this.$q.loading.hide()
-          });
+      // }).finally(() => {
+      //       this.$q.loading.hide()
+      //     });
     },
     querySearch(event){
       this.searchQueryId(event.target.value)
