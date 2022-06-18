@@ -6,7 +6,6 @@ export default {
     response:null,
     paginate:null,
     isLoading: true,
-    sub_categories:null
   },
   mutations:{
     SET_BLOGS(state,data){

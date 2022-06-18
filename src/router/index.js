@@ -7,7 +7,7 @@ import store from '../store/index'
 import axios from 'axios'
 
 //axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'
-axios.defaults.baseURL = 'https://tutorialandexample.com/api/'
+axios.defaults.baseURL = 'https://www.tutorialandexample.com/api/'
 
 export default route(function ({ store }) {
 

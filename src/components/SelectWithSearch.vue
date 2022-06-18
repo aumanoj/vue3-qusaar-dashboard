@@ -1,15 +1,19 @@
 <template>
       <q-select
-        filled
-        v-model="model"
+        v-model="value"
         use-input
         input-debounce="0"
-        @input="updateValue"
-        label="Simple filter"
-        :options="options.map((item)=>({label:item.name,value:item.id}))"
+        :label="labelName"
+        :options="options.map((item)=>({name:item.name,id:item.id}))"
         @filter="filterFn"
-        style="width: 250px"
-        behavior="menu"
+        @input="updateValue"
+        style="width: 100%"
+        color="teal" 
+        outlined
+        option-label="name"
+        option-value="id"
+        emit-value
+        map-options
       >
         <template v-slot:no-option>
           <q-item>
@@ -27,16 +31,19 @@ import { ref } from 'vue'
 
 export default {
     props:{
-        stringOptions:Array
+        stringOptions:Array,
+        labelName:String
     },
+ 
   setup (props,context) {
     const options = ref(props.stringOptions)
 
+   
     const updateValue = (event)=>{
         context.emit('update:modelValue',event.target.value)
     }
     return {
-      model: ref(null),
+      value: ref(null),
       updateValue,
       options,
 

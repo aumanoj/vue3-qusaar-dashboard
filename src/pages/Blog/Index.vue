@@ -114,7 +114,7 @@
                     <option v-for="(sub_category,index) in sub_categories" :key="index" :value="sub_category.id" >{{ sub_category.name }}</option>
                     <option  value="newCat">Enter New Category</option>
               </select> -->
-               <select-with-search  v-model="form.blog_subcat" :stringOptions="sub_categories" />
+               <select-with-search labelName="Select Tutorial"  @change="selectItemShow($event)"  v-model="form.blog_subcat" :stringOptions="sub_categories" />
               
             </div>
           </div>
@@ -454,7 +454,9 @@ export default {
       searchQueryId:'blog/searchQueryId',
 
     }),
+  
     selectItemShow(event){
+      alert('hi')
       if(this.newCategory == event.target.value) {
         this.seen = true
       } else {
@@ -469,21 +471,20 @@ export default {
         }
       },
     createdForm () {
-      console.log(this.form);
-      // this.$q.loading.show()
-      //     this.create(this.form)
-      // .then(response => {
-      //   if (response.success) {
-      //     this.formModal = false
-      //     this.$q.loading.hide()
-      //     this.$q.notify({
-      //       message: response.message,
-      //     })
-      //   }
+      this.$q.loading.show()
+          this.create(this.form)
+      .then(response => {
+        if (response.success) {
+          this.formModal = false
+          this.$q.loading.hide()
+          this.$q.notify({
+            message: response.message,
+          })
+        }
         this.get(this.$route.query)
-      // }).finally(() => {
-      //       this.$q.loading.hide()
-      //     });
+      }).finally(() => {
+            this.$q.loading.hide()
+          });
     },
     querySearch(event){
       this.searchQueryId(event.target.value)
@@ -497,13 +498,13 @@ export default {
         if (response.success) {
           this.$q.loading.hide()
           this.form = response.data
-          //console.log(this.form.id)
+          this.form['blog_subcat'] = JSON.parse(response.data.blog_subcat)
         }
       })
     },
     updateForm () {
       this.$q.loading.show()
-          this.update(this.form)
+      this.update(this.form)
       .then(response => {
         if (response.success) {
           this.formModal = false
