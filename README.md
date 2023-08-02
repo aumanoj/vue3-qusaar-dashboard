@@ -1,7 +1,6 @@
 # Quasar App (gowebsurvey)
 
-A Quasar Framework app
-
+A Quasar Framework app. Created a dashboard to add the page content like articles, chapters  or new course.  
 ## Install the dependencies
 ```bash
 npm install
